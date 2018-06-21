@@ -15,15 +15,17 @@
             <th>Name</th>
             <th>Structure bs64</th>
             <th>Action</th>
+            <th class="hide">Created On</th>
           </tr>
           </thead>
 
           <tbody>
-          <% @chemical_structures.each do |chemical_structure| %>
+          <% @chemical_structures.order("created_at DESC").each do |chemical_structure| %>
             <tr>
               <td><%= chemical_structure.name %></td>
               <td><%= image_tag(chemical_structure.structure_bs64, width: "200px") %></td>
               <td><%= link_to 'Edit', edit_chemical_structure_path(chemical_structure) %></td>
+              <td class="hide"><%= chemical_structure.created_at %></td>
             </tr>
           <% end %>
           </tbody>
@@ -40,7 +42,10 @@
 <script>
     $("document").ready(function () {
         $("#marvin_table").DataTable({
-            "pageLength": 10
+            "pageLength": 10,
+            "order":[
+                [3,'DESC']
+            ]
         });
     })
 </script>

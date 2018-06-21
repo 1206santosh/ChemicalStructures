@@ -73,7 +73,12 @@
 
         $(".save-name").on('click' ,function (e) {
             $("#chemical_structure_name").val($("#modal-name").val())
-            $("#name-modal").modal('hide')
+            if($("#modal-name").val()!="") {
+                $("#name-modal").modal('hide')
+            }
+            else{
+                alert("Name can't be blank")
+            }
         })
 
         $(".marvin_form").on("submit", function () {
@@ -96,7 +101,12 @@
                         'width': 1024,
                         'height': 720
                     }))
-                    $(".marvin_form").submit()
+                    if(source=="<cml><MDocument></MDocument></cml>"){
+                        alert("Empty Structure Can't Be Saved")
+                    }
+                    else {
+                        $(".marvin_form").submit()
+                    }
                 })
 
 
