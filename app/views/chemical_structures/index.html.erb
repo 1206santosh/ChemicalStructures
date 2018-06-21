@@ -23,7 +23,7 @@
             <tr>
               <td><%= chemical_structure.name %></td>
               <td><%= image_tag(chemical_structure.structure_bs64, width: "200px") %></td>
-              <td><%= link_to 'Show', chemical_structure %></td>
+              <td><%= link_to 'Edit', edit_chemical_structure_path(chemical_structure) %></td>
             </tr>
           <% end %>
           </tbody>
@@ -40,7 +40,7 @@
 <script>
     $("document").ready(function () {
         $("#marvin_table").DataTable({
-            "pageLength": 3
+            "pageLength": 10
         });
     })
 </script>

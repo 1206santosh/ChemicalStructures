@@ -29,7 +29,7 @@ class ChemicalStructuresController < ApplicationController
     @chemical_structure = ChemicalStructure.new(chemical_structure_params)
     respond_to do |format|
       if @chemical_structure.save
-        format.html { redirect_to @chemical_structure, notice: 'Chemical structure was successfully created.' }
+        format.html { redirect_to chemical_structures_path, notice: 'Chemical structure was successfully created.' }
         format.json { render :show, status: :created, location: @chemical_structure }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class ChemicalStructuresController < ApplicationController
   def update
     respond_to do |format|
       if @chemical_structure.update(chemical_structure_params)
-        format.html { redirect_to @chemical_structure, notice: 'Chemical structure was successfully updated.' }
+        format.html { redirect_to chemical_structures_path, notice: 'Chemical structure was successfully updated.' }
         format.json { render :show, status: :ok, location: @chemical_structure }
       else
         format.html { render :edit }
