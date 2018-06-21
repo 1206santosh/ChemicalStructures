@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  marvin_structure: MyText
+  structure_bs64: MyText
+  ref_id: MyString
+
+two:
+  name: MyString
+  marvin_structure: MyText
+  structure_bs64: MyText
+  ref_id: MyString

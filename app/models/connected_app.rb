@@ -1,0 +1,2 @@
+class ConnectedApp < ApplicationRecord
+end

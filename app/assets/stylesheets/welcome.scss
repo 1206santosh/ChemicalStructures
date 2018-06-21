@@ -1,0 +1,41 @@
+// Place all the styles related to the welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Variables */
+$loader-size: 100px;
+
+/* Loading Icon */
+.loading {
+  width: $loader-size;
+  height: $loader-size;
+
+  &__ring {
+    position: absolute;
+    width: $loader-size;
+    height: $loader-size;
+
+    &:first-child {
+      transform: skew(30deg,20deg);
+    }
+
+    &:last-child {
+      transform: skew(-30deg,-20deg) scale(-1, 1);
+
+      svg {
+        animation-delay: -0.5s;
+      }
+    }
+
+    svg {
+      animation: rotate 1s linear infinite;
+      fill: rgba(0, 0, 0, 0.2);
+    }
+  }
+}

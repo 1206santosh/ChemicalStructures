@@ -1,0 +1,2 @@
+module ChemicalStructuresHelper
+end

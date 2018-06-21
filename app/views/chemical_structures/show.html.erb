@@ -1,0 +1,32 @@
+<div class="panel panel-default">
+  <div class="row">
+    <div class="col-sm-12">
+
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <div class="panel panel-default-light border-default">
+      <div class="panel-heading">
+        <div class="panel-title">
+          <h5><%= @chemical_structure.name.titleize %></h5>
+        </div>
+        <div class="panel-tools pull-right">
+          <button type="button" class="btn btn-default btn-sm">
+            <i class="fa fa-pencil m-right-5"></i> <%= link_to 'Edit', edit_chemical_structure_path(@chemical_structure) %>
+          </button>
+          <button type="button" class="btn btn-default btn-sm">
+            <i class="fa fa-download m-right-5"></i> <%= link_to 'Back', chemical_structures_path %>
+          </button>
+        </div>
+      </div>
+
+      <div class="panel-body">
+        <%= image_tag(@chemical_structure.structure_bs64, width: "400px") %>
+      </div><!-- /.panel-body -->
+    </div>
+  </div>
+</div>
+
