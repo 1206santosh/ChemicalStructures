@@ -69,12 +69,17 @@
         })
         <%end %>
 
-
+        var available_names="<%=ChemicalStructure.all.pluck(:name).join(",")%>".split(",")
 
         $(".save-name").on('click' ,function (e) {
             $("#chemical_structure_name").val($("#modal-name").val())
             if($("#modal-name").val()!="") {
-                $("#name-modal").modal('hide')
+                if(available_names.indexOf($("#modal-name").val())==-1) {
+                    $("#name-modal").modal('hide')
+                }
+                else {
+                    alert("Structure With Same Name Already Exist")
+                }
             }
             else{
                 alert("Name can't be blank")

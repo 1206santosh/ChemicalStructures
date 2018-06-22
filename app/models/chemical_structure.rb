@@ -1,7 +1,7 @@
 class ChemicalStructure < ApplicationRecord
 
 
-  validates :name, presence: true
+  validates :name, presence: true,uniqueness: true
   before_create :assign_ref_id
   after_save :sync_all_apps
 
