@@ -13,6 +13,7 @@ gem 'puma', '~> 3.11'
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
+gem "therubyracer"
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
@@ -27,7 +28,9 @@ gem 'gon'
 gem 'simple_form'
 gem "twitter-bootstrap-rails"
 gem 'pg'
-# Use Redis adapter to run Action Cable in production
+gem 'sqlite3'
+
+# Use Redis abudapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -53,7 +56,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  # gem 'sqlite3'
+
 end
 
 group :test do

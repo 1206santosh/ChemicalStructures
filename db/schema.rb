@@ -12,9 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2018_06_20_154354) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "chemical_structures", force: :cascade do |t|
     t.string "name"
     t.text "marvin_structure"
