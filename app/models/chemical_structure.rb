@@ -1,14 +1,13 @@
 class ChemicalStructure < ApplicationRecord
 
 
+  validates :name, presence: true
   before_create :assign_ref_id
-
   after_save :sync_all_apps
 
 
   def assign_ref_id
     self.ref_id = SecureRandom.hex(16)
-    # self.name=SecureRandom.hex(16)
   end
 
 
