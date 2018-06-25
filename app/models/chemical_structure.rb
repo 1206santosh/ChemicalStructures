@@ -1,7 +1,7 @@
 class ChemicalStructure < ApplicationRecord
 
 
-  validates :name, presence: true,uniqueness: true
+  validates :name, presence: true, uniqueness: true
   before_create :assign_ref_id
   after_save :sync_all_apps
 
@@ -19,7 +19,6 @@ class ChemicalStructure < ApplicationRecord
       require "net/http"
       params = {ref_id: self.ref_id, structure: self.structure_bs64, name: self.name}
       uri = URI(app.app_url)
-
       x = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
       x.body = params.to_json
       begin

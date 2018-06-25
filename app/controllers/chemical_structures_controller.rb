@@ -62,6 +62,21 @@ class ChemicalStructuresController < ApplicationController
     end
   end
 
+  def validate_name
+      if params[:search_name].present?
+         @names=ChemicalStructure.search({'name_eq':params[:search_name]}).result
+         if @names.count>0
+            render json:{found:true,empty_string:false}
+         else
+           render json:{found:false,empty_string:false}
+         end
+
+      else
+        render json:{empty_string:true}
+
+      end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_chemical_structure

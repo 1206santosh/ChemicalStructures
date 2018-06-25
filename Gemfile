@@ -24,11 +24,13 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 gem 'rails_admin'
+gem 'devise'
 gem 'gon'
 gem 'simple_form'
 gem "twitter-bootstrap-rails"
 gem 'pg'
 gem 'sqlite3'
+gem 'ransack'
 
 # Use Redis abudapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
