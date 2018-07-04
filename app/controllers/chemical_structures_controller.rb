@@ -1,5 +1,5 @@
 class ChemicalStructuresController < ApplicationController
-  before_action :set_chemical_structure, only: [:show, :edit, :update, :destroy]
+  before_action :set_chemical_structure, only: [:show, :update, :destroy]
 
   # GET /chemical_structures
   # GET /chemical_structures.json
@@ -15,10 +15,19 @@ class ChemicalStructuresController < ApplicationController
   # GET /chemical_structures/new
   def new
     @chemical_structure = ChemicalStructure.new
+    @chemical_structure.base = true
+    if params[:ref_id].present?
+      @chemical_structure.ref_id=params[:ref_id]
+    end
   end
 
   # GET /chemical_structures/1/edit
   def edit
+    if params[:ref_id].present?
+      @chemical_structure=ChemicalStructure.find_by(ref_id:params[:ref_id])
+    else
+      @chemical_structure=ChemicalStructure.find(params[:id])
+    end
     gon.marvin_structure=@chemical_structure.marvin_structure
     # raise
   end
@@ -27,6 +36,7 @@ class ChemicalStructuresController < ApplicationController
   # POST /chemical_structures.json
   def create
     @chemical_structure = ChemicalStructure.new(chemical_structure_params)
+
     respond_to do |format|
       if @chemical_structure.save
         format.html { redirect_to chemical_structures_path, notice: 'Chemical structure was successfully created.' }
@@ -70,12 +80,27 @@ class ChemicalStructuresController < ApplicationController
          else
            render json:{found:false,empty_string:false}
          end
-
       else
         render json:{empty_string:true}
-
       end
   end
+
+
+  def add_as_new
+    if params[:ref_id].present? && params[:parent_ref_id].present?
+      @chemical_structure=ChemicalStructure.find_by(ref_id:params[:parent_ref_id])
+      if @chemical_structure.nil?
+        redirect_to root_path
+      else
+        @child_structure=@chemical_structure.duplicate()
+        @child_structure.ref_id=params[:ref_id]
+        @child_structure.save
+        redirect_to edit_chemical_structure_path(@child_structure)
+      end
+    end
+  end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -85,6 +110,6 @@ class ChemicalStructuresController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def chemical_structure_params
-      params.require(:chemical_structure).permit(:name, :marvin_structure, :structure_bs64, :ref_id)
+      params.require(:chemical_structure).permit(:name, :marvin_structure, :structure_bs64, :ref_id,:base)
     end
 end

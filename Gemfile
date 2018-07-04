@@ -31,6 +31,7 @@ gem "twitter-bootstrap-rails"
 gem 'pg'
 gem 'sqlite3'
 gem 'ransack'
+gem 'paper_trail'
 
 # Use Redis abudapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
